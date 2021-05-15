@@ -12,27 +12,36 @@ function Main(props) {
 
   //render data with effect hook>> After receiving the response, set the received data in the corresponding state variables.
   useEffect(() => {
-    api.getInfo().then((res) => {
-      setUserName(res.name);
-      setUserDescription(res.about);
-      setUserAvatar(res.avatar);
-    });
-  // handle error
+    api
+      .getInfo()
+      .then((res) => {
+        setUserName(res.name);
+        setUserDescription(res.about);
+        setUserAvatar(res.avatar);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   //render initial cards
   useEffect(() => {
-    api.getCardList().then((res) => {
-      const cards = res.map((card) => ({
-        id: card._id,
-        name: card.name,
-        link: card.link,
-        likes: card.likes.length,
-      }));
-      console.log(res);
-      setCards(cards);
-    });
-  // handle error
+    api
+      .getCardList()
+      .then((res) => {
+        const cards = res.map((card) => ({
+          id: card._id,
+          name: card.name,
+          link: card.link,
+          likes: card.likes.length,
+        }));
+        // console.log(res);
+        setCards(cards);
+      })
+
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -76,7 +85,9 @@ function Main(props) {
       <section className="grid">
         <ul className="grid__container">
           {cards.map((card, id) => {
-            return <Card key={id} card={card} onCardClick={props.onCardClick}/>;
+            return (
+              <Card key={id} card={card} onCardClick={props.onCardClick} />
+            );
           })}
         </ul>
       </section>

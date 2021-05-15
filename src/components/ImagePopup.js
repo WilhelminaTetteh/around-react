@@ -1,4 +1,4 @@
-function ImagePopup (props){
+function ImagePopup(props) {
   return (
     <div
       className={`modal modal_type_${props.name} ${
@@ -12,7 +12,6 @@ function ImagePopup (props){
         onClick={props.onClose}
       ></button>
       <figure className="modal__figure">
-    {/* select card prop */}
         <img className="modal__image" src={props.card.link} alt="#" />
         <figcaption className="modal__image-caption">
           {props.card.name}
@@ -21,5 +20,10 @@ function ImagePopup (props){
     </div>
   );
 }
- 
+
 export default ImagePopup;
+
+/* selectCard prop >>
+The card prop>> is the object 
+    containing the name and image URL, which i pass in from wherever i have it.  ill pass it in anywhere that
+     i need that data for a particular card*/

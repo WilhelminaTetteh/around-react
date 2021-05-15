@@ -15,15 +15,15 @@ function App() {
 
   //handlers for opening modals
   function handleEditAvatarClick() {
-    console.log("The Avatar was clicked.");
+    // console.log("The Avatar was clicked.");
     setIsEditAvatarPopupOpen(true);
   }
   function handleEditProfileClick() {
-    console.log("The Profile was clicked.");
+    // console.log("The Profile was clicked.");
     setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    console.log("The Place button  was clicked.");
+    // console.log("The Place button  was clicked.");
     setIsAddPlacePopupOpen(true);
   }
   //Image Popup
@@ -33,7 +33,7 @@ function App() {
   }
   //close modals
   function closeAllPopups() {
-    console.log("Popup was closed");
+    // console.log("Popup was closed");
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
