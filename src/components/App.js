@@ -27,8 +27,8 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
   //Image Popup
-  function handleCardClick({name,link}) {
-    setSelectedCard({name,link});
+  function handleCardClick({ name, link }) {
+    setSelectedCard({ name, link });
     setIsImagePopupOpen(true);
   }
   //close modals
@@ -55,6 +55,7 @@ function App() {
         <PopupWithForm
           name={`edit-profile`}
           title={`Edit profile`}
+          buttonText={`Save`}
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
         >
@@ -78,15 +79,12 @@ function App() {
             />
             <span id="profile-text-error" className="form__error"></span>
           </label>
-          <button className="form__button form__button-save" type="submit">
-            Save
-          </button>
         </PopupWithForm>
 
         <PopupWithForm
           name={`add-card`}
           title={`New place`}
-          button={`Create`}
+          buttonText={`Create`}
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
         >
@@ -111,14 +109,12 @@ function App() {
             />
             <span id="card-url-error" className="form__error"></span>
           </label>
-          <button className="form__button" type="submit" disabled>
-            Create
-          </button>
         </PopupWithForm>
 
         <PopupWithForm
           name={`avatar`}
           title={`Change profile picture`}
+          buttonText={`Save`}
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         >
@@ -132,9 +128,6 @@ function App() {
             />
             <span id="avatar-url-error" className="form__error"></span>
           </label>
-          <button className="form__button" type="submit" disabled>
-            Save
-          </button>
         </PopupWithForm>
 
         <PopupWithForm name={`delete`} title={`Are you sure?`}>
