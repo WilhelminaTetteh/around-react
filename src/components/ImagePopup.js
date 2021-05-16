@@ -12,7 +12,11 @@ function ImagePopup(props) {
         onClick={props.onClose}
       ></button>
       <figure className="modal__figure">
-        <img className="modal__image" src={props.card.link} alt="#" />
+        <img
+          className="modal__image"
+          src={props.card.link}
+          alt="place image popup"
+        />
         <figcaption className="modal__image-caption">
           {props.card.name}
         </figcaption>
@@ -24,6 +28,8 @@ function ImagePopup(props) {
 export default ImagePopup;
 
 /* selectCard prop >>
-The card prop>> is the object 
-    containing the name and image URL, which i pass in from wherever i have it.  ill pass it in anywhere that
-     i need that data for a particular card*/
+req:The selectedCard value should be transmitted using the 
+card props to the ImagePopup component
+>>The card prop>> is the object 
+  containing the name and image URL, which i pass in from wherever i have it.  ill pass it in anywhere that
+  i need that data for a particular card*/

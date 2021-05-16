@@ -1,7 +1,7 @@
 import pencil from "../images/pencil.svg";
 import add from "../images/add.svg";
 import { useEffect, useState } from "react";
-import api from "../utils/Api";
+import api from "../utils/api";
 import Card from "./Card";
 
 function Main(props) {
@@ -50,7 +50,7 @@ function Main(props) {
         <div className="avatar" onClick={props.onEditAvatarClick}>
           <img
             src={userAvatar}
-            alt="girl with an afro"
+            alt="profile photo"
             className="profile__image"
           />
           <div className="avatar__overlay"></div>

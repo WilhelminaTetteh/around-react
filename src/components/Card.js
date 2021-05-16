@@ -34,3 +34,4 @@ function Card(props) {
 
 export default Card;
 
+// pass it on to the Card component through the Main component — in the form of onCardClick props
