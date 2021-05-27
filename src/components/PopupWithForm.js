@@ -13,7 +13,8 @@ function PopupWithForm(props) {
           aria-label="modal button"
           onClick={props.onClose}
         ></button>
-        <form action="#" className="form" method="POST" name={props.name}>
+        {/* Add the onSubmit prop to the PopupWithForm component and set it as the value of the attribute of the same name of the form tag */}
+        <form action="#" className="form" method="POST" name={props.name} onSubmit={props.onSubmit}>
           <h2 className="form__heading">{`${props.title}`}</h2>
           {props.children}
           <button className="form__button " type="submit">
