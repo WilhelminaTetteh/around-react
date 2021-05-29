@@ -19,6 +19,12 @@ function Card(props) {
   function handleClick() {
     props.onCardClick(props.card);
   }
+  function handleLikeClick() {
+    props.onCardLike(props.card);
+  }
+  function handleDeleteClick() {
+    props.onCardDelete(props.card);
+  }
   return (
     <div className="grid__template">
       <li className="grid__item">
@@ -26,6 +32,7 @@ function Card(props) {
           type="button"
           aria-label="modal button"
           className={cardDeleteButtonClassName}
+          onClick={handleDeleteClick}
         ></button>
         <div
           className="grid__image"
@@ -37,6 +44,7 @@ function Card(props) {
           <div className="grid__like-column">
             <button
               className={cardLikeButtonClassName}
+              onClick={handleLikeClick}
               aria-label="grid icon"
               type="button"
             ></button>

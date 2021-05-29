@@ -91,7 +91,7 @@ function Main(props) {
         <ul className="grid__container">
           {props.cards.map((card, id) => {
             return (
-              <Card key={id} card={card} onCardClick={props.onCardClick} />
+              <Card key={id} card={card} onCardClick={props.onCardClick} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete}/>
             );
           })}
         </ul>

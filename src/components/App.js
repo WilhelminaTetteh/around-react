@@ -90,6 +90,42 @@ function App() {
         console.log(err);
       });
   }
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    
+    // Send a request to the API and getting the updated card data
+    if (!isLiked) {
+      api.changeLikeCardStatus(card._id)
+        .then((newCard) => {
+        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+      });
+    } else {
+       api.deleteLike(card._id).then((newCard) => {
+         setCards((state) =>
+           state.map((c) => (c._id === card._id ? newCard : c))
+         );
+       })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+   
+  }
+  function handleCardDelete(card) {
+    // After the API request, update the cards state using the filter() method. Create a copy 
+    // of the array and exclude the deleted card from it.
+    api
+      .removeCard(card._id)
+      .then(() => {
+        const cardList = cards.filter((c) => c._id !== card._id);
+        setCards(cardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
   return (
     <div className="page">
@@ -102,6 +138,8 @@ function App() {
             onAddPlaceClick={handleAddPlaceClick}
             onCardClick={handleCardClick}
             cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
 
           <Footer />
