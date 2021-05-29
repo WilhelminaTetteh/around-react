@@ -5,6 +5,7 @@ import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
@@ -16,12 +17,23 @@ function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api
       .getInfo()
       .then((res) => {
         setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    api
+      .getCardList()
+      .then((res) => {
+        setCards(res);
       })
       .catch((err) => {
         console.log(err);
@@ -67,6 +79,18 @@ function App() {
       });
   }
 
+  //Handle avatar update
+  function handleUpdateAvatar({ avatar }) {
+    api
+      .setUserAvatar({ avatar })
+      .then((res) => {
+        setCurrentUser(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="page">
       <div className="page__container">
@@ -77,6 +101,7 @@ function App() {
             onEditProfileClick={handleEditProfileClick}
             onAddPlaceClick={handleAddPlaceClick}
             onCardClick={handleCardClick}
+            cards={cards}
           />
 
           <Footer />
@@ -143,8 +168,12 @@ function App() {
               <span id="card-url-error" className="form__error"></span>
             </label>
           </PopupWithForm>
-
-          <PopupWithForm
+          <EditAvatarPopup
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+          />
+          {/* <PopupWithForm
             name={`avatar`}
             title={`Change profile picture`}
             buttonText={`Save`}
@@ -161,7 +190,7 @@ function App() {
               />
               <span id="avatar-url-error" className="form__error"></span>
             </label>
-          </PopupWithForm>
+          </PopupWithForm> */}
 
           <PopupWithForm name={`delete`} title={`Are you sure?`}>
             <button
