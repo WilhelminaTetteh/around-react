@@ -153,92 +153,19 @@ function App() {
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
           />
-          {/* <PopupWithForm
-            name={`edit-profile`}
-            title={`Edit profile`}
-            buttonText={`Save`}
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
-          >
-            <label className="form__lable">
-              <input
-                id="profile-name"
-                type="text"
-                placeholder="Name"
-                className="form__input form__input_type_title"
-                name="title"
-              />
-              <span id="profile-name-error" className="form__error"></span>
-            </label>
-            <label className="form__lable">
-              <input
-                id="profile-text"
-                type="text"
-                placeholder="About me"
-                className="form__input form__input_type_description"
-                name="description"
-              />
-              <span id="profile-text-error" className="form__error"></span>
-            </label>
-          </PopupWithForm> */}
+         
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
           />
-          {/* <PopupWithForm
-            name={`add-card`}
-            title={`New place`}
-            buttonText={`Create`}
-            isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
-          >
-            <label className="form__lable">
-              <input
-                id="card-title"
-                type="text"
-                placeholder="Title"
-                className="form__input form__input_type_card-title"
-                name="name"
-              />
-              <span id="card-title-error" className="form__error"></span>
-            </label>
-
-            <label className="form__lable">
-              <input
-                id="card-url"
-                type="url"
-                placeholder="Image link"
-                className="form__input form__input_type_url"
-                name="link"
-              />
-              <span id="card-url-error" className="form__error"></span>
-            </label>
-          </PopupWithForm> */}
+          
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
           />
-          {/* <PopupWithForm
-            name={`avatar`}
-            title={`Change profile picture`}
-            buttonText={`Save`}
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
-          >
-            <label className="form__lable">
-              <input
-                id="avatar-url"
-                type="url"
-                placeholder="Image link"
-                className="form__input form__input_type_url form__input_type_avatar-url"
-                name="link"
-              />
-              <span id="avatar-url-error" className="form__error"></span>
-            </label>
-          </PopupWithForm> */}
-
+         
           <PopupWithForm name={`delete`} title={`Are you sure?`}>
             <button
               type="button"
