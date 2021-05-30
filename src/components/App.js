@@ -6,6 +6,7 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
@@ -125,7 +126,11 @@ function App() {
         console.log(err);
       });
   }
-
+  function handleAddPlaceSubmit({ name, link }) {
+    api.addCard({ name, link }).then((newCard) => {
+      setCards([newCard, ...cards]);
+    });
+  }
 
   return (
     <div className="page">
@@ -176,8 +181,12 @@ function App() {
               <span id="profile-text-error" className="form__error"></span>
             </label>
           </PopupWithForm> */}
-
-          <PopupWithForm
+          <AddPlacePopup
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlaceSubmit}
+          />
+          {/* <PopupWithForm
             name={`add-card`}
             title={`New place`}
             buttonText={`Create`}
@@ -205,7 +214,7 @@ function App() {
               />
               <span id="card-url-error" className="form__error"></span>
             </label>
-          </PopupWithForm>
+          </PopupWithForm> */}
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
