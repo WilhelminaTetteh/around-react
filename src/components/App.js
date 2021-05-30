@@ -74,6 +74,7 @@ function App() {
       .updateUserInfo({ name, about })
       .then((res) => {
         setCurrentUser(res);
+        closeAllPopups()
       })
       .catch((err) => {
         console.log(err);
@@ -86,6 +87,7 @@ function App() {
       .setUserAvatar({ avatar })
       .then((res) => {
         setCurrentUser(res);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
@@ -97,10 +99,16 @@ function App() {
     
     // Send a request to the API and getting the updated card data
     if (!isLiked) {
-      api.changeLikeCardStatus(card._id)
+      api
+        .changeLikeCardStatus(card._id)
         .then((newCard) => {
-        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-      });
+          setCards((state) =>
+            state.map((c) => (c._id === card._id ? newCard : c))
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
        api.deleteLike(card._id).then((newCard) => {
          setCards((state) =>
@@ -127,9 +135,16 @@ function App() {
       });
   }
   function handleAddPlaceSubmit({ name, link }) {
-    api.addCard({ name, link }).then((newCard) => {
-      setCards([newCard, ...cards]);
-    });
+    api
+      .addCard({ name, link })
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
   }
 
   return (

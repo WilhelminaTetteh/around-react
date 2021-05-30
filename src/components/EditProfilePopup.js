@@ -30,7 +30,7 @@ function EditProfilePopup(props) {
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, props.isOpen]); //watch isOpen here to insert the user's data into the inputs
   return (
     <PopupWithForm
       name={`edit-profile`}
@@ -42,7 +42,8 @@ function EditProfilePopup(props) {
     >
       <label className="form__lable">
         <input
-          defaultValue={name}
+          // defaultValue={name}
+          value={name || ""}
           onChange={handleNameChange}
           id="profile-name"
           type="text"
@@ -54,7 +55,8 @@ function EditProfilePopup(props) {
       </label>
       <label className="form__lable">
         <input
-          defaultValue={description}
+          // defaultValue={description}
+          value={description || ""}
           onChange={handleDescriptionChange}
           id="profile-text"
           type="text"
